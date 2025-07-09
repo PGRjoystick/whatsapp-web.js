@@ -968,7 +968,17 @@ exports.LoadUtils = () => {
         return undefined;
     };
 
-    window.WWebJS.getAddParticipantsRpcResult = async (groupWid, participantWid) => {
+    window.WWebJS.getAddParticipantsRpcResult = async (groupMetadata, groupWid, participantWid) => {
+        // const participantLidArgs = groupMetadata?.isLidAddressingMode
+        //     ? {
+        //         phoneNumber: participantWid,
+        //         lid: window.Store.LidUtils.getCurrentLid(participantWid)
+        //     }
+        //     : { phoneNumber: participantWid };
+
+        void groupMetadata;
+        const participantLidArgs = { phoneNumber: participantWid };
+
         const iqTo = window.Store.WidToJid.widToGroupJid(groupWid);
 
         const participantArgs = [{
